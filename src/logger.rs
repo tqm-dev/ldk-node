@@ -63,6 +63,10 @@ impl Logger for FilesystemLogger {
 			record.line,
 			raw_log
 		);
+
+		#[cfg(target_os = "android")]
+		println!("{}",log);
+
 		fs::OpenOptions::new()
 			.create(true)
 			.append(true)
